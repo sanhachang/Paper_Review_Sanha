@@ -73,26 +73,47 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{
  
  $$ D: Backbone_model_Hidden_dimension $$
 
-위의 Query, Key, Value를 활용해 Attention 과정을 거친다.
+위의 Query, Key, Value를 활용해 Multi-head Cross Attention 과정을 거친다.
 
- $$ \Huge Z_k^{(i)} = \text{ATTENTION}\left(Q_k^{(i)}, K_k^{(i)}, V_k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_k^{(i)} {K_k^{(i)}}^T}{\sqrt{d_k}}\right) V_k^{(i)}, \quad Z_k^{(i)} \in \mathbb{R}^{P \times d} $$
+$$ \Huge Z_k^{(i)} = \text{ATTENTION}\left(Q_k^{(i)}, K_k^{(i)}, V_k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_k^{(i)} {K_k^{(i)}}^T}{\sqrt{d_k}}\right) V_k^{(i)}, \quad Z_k^{(i)} \in \mathbb{R}^{P \times d} $$
+
+이렇게 만들어진 각 head를 Concat하여 Attention Output을 만들고
+
+$$ \Huge Z^{(i)} \in \mathbb{R}^{P \times d_m} $$
+
+이 Output을 이후 Backbonemodel에 Align하기 위해 Projection을 진행하여 Patch Reprogemming을 마무리한다.
+
+$$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
  
+### **3.3. Prompt as Prefix**
+
+
+### **3.4. Output Generation**
+
+
+
 ## **4. Experiment**  
 
 In this section, please write the overall experiment results.  
 At first, write experiment setup that should be composed of contents.  
 
-### **Experiment setup**  
-* Dataset  
-* baseline  
-* Evaluation Metric  
+### **4.1. Dataset**
 
-### **Result**  
-Then, show the experiment results which demonstrate the proposed method.  
-You can attach the tables or figures, but you don't have to cover all the results.  
-  
+### **4.2. Evaluation Metric**
 
+### **4.3. Baseline**
 
+### **4.4. Result**
+
+#### **4.4.1. Long-term Forecasting**
+
+#### **4.4.2. Short-term Forecasting**
+
+#### **4.4.3. Few-shot Learning**
+
+#### **4.4.4. Zero-shot Learning**
+
+#### **4.4.5. Model Analysis**
 
 ## **5. Conclusion**  
 
@@ -102,14 +123,17 @@ It is free to write all you want. e.g, your opinion, take home message(오늘의
 ---  
 ## **Author Information**  
 
-* Author name  
-    * Affiliation  
-    * Research Topic
+* Sanha Chang  
+    * Affiliation: [iStat Lab](https://istat.kaist.ac.kr/)
+    * Research Topic: Spatial-Temporal Data Analysis, Deep Learning
+    * Contact: jsh0319@kaist.ac.kr
 
 ## **6. Reference & Additional materials**  
 
 Please write the reference. If paper provides the public code or other materials, refer them.  
 
-* Github Implementation  
-* Reference  
+* Github Implementation
+  *   [Code for Paper](https://github.com/KimMeen/Time-LLM)
+* Reference
+  *  [Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://openreview.net/forum?id=Unb5CVPtae)
 
