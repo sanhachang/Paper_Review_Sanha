@@ -10,7 +10,7 @@ Description: 'Jin et al. / Time-LLM: Time Series Forecasting by Reprogramming La
 
  이런 문제 상황을 해결하기 위해 본 연구는 LLM의 backbone은 그대로 유지하면서 일반적인 시계열 예측을 진행할 수 있게하는 Reprogramming Framework를 제시한다. 크게 두 가지의 방법을 제시하는데, 먼저 시계열 데이터를 LLM의 능력이 강화될 수 있도록 Embedding, Patching을 거친 후 Text vector들과 합쳐주는 Patch Reprogramming이 있고, 그 후에 시계열 데이터의 Context나 해결해야 하는 Task의 정보, 적당한 Statistics를 Input에 합쳐주는 Prompt as Prefix가 존재한다. 이 두 가지 특별한 Process를 통해 시계열 데이터가 LLM을 통해 좋은 성능의 예측이 가능하다는 것을 보여준다.
 
-## **2. Motivation**  
+## **2. Background**  
 
 ### **2.1. Time Series for LLM**
 
@@ -20,7 +20,21 @@ Description: 'Jin et al. / Time-LLM: Time Series Forecasting by Reprogramming La
 
  본 연구에서도 이와 유사한 개념으로 Prompt as Prefix와 Pre-trained word embedding을 사용하기에, 위의 예시를 참고하면 더욱 연구 Process를 이해하기 쉬울 것이다.
 
+### **2.2. Consideration Time Series for LLM**
+
+ ㄱ) 시계열 데이터 자체가 많이 존재하지 않는다.
+
+ 가장 큰 문제는  2024년 현재까지 시계열 데이터 셋 중 가장 크다고 여겨지는 것의 용량이 10GB 미만으로 Vision, NLP 등 다른 분야에 비해 Foundation Model을 학습시킬 데이터가 현저하게 부족하다.그렇기에 이를 해결하기 위해 GAN 같은 방법을 사용하거나 LLM 자체를 Domain에 따라 미리 Prompt를 넣어주기도 한다. 
+
+ ㄴ) 각 시계열 데이터셋의 특징이나 모양이 상이하다. 
+
+ 먼저, Domain마다 데이터셋마다 통계적인 특성이나 Scale에서 차이가 난다. 예를 들어 제조 과정에서 얻어지는 변동성의 정도와 금융 시장의 변동성은 차원이 다른 수준이기에 이를 한 번에 통합하여 학습시키기 힘들다. 
+
+ 두 번째로 Granularity의 문제가 있다. 풀어서 얘기하자면 데이터의 time-step이 각 데이터 셋마다 다르다는 의미이다. 
+
 ## **3. Method**  
+
+### **3.1. Model Setting**
 
 Please write the methodology author have proposed.  
 We recommend you to provide example for understanding it more easily.  
