@@ -65,13 +65,17 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{
 
  이후 Embedding한 시계열 데이터와 위의 Text Prototype을 Cross-attention을 활용해 Align한다. 이때 Embedding TS는 Query로 Text-Prototype은 key와 value로 이용한다.
 
- $$ \Large Q_k^{(i)} = \hat{X}_P^{(i)} W_Q^k, W_Q^k \in \mathbb{R}^{d_m \times d} $$
+ $$ \large Q_k^{(i)} = \hat{X}_P^{(i)} W_Q^k, W_Q^k \in \mathbb{R}^{d_m \times d} $$
  
- $$ \Large K_k^{(i)} = E'W_K^k, W_K^k \in \mathbb{R}^{D \times d} $$
+ $$ \large K_k^{(i)} = E'W_K^k, W_K^k \in \mathbb{R}^{D \times d} $$
  
- $$ \Large V_k^{(i)} = E'W_V^k, W_V^k \in \mathbb{R}^{D \times d} $$
+ $$ \large V_k^{(i)} = E'W_V^k, W_V^k \in \mathbb{R}^{D \times d} $$
  
- $$ D: Backbone model Hidden dimension $$
+ $$ D: Backbone_model_Hidden_dimension $$
+
+위의 Query, Key, Value를 활용해 Attention 과정을 거친다.
+
+ $$ \Huge Z_k^{(i)} = \text{ATTENTION}\left(Q_k^{(i)}, K_k^{(i)}, V_k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_k^{(i)} {K_k^{(i)}}^T}{\sqrt{d_k}}\right) V_k^{(i)}, \quad Z_k^{(i)} \in \mathbb{R}^{P \times d} $$
  
 ## **4. Experiment**  
 
