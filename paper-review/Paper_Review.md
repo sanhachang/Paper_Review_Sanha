@@ -86,6 +86,9 @@ $$ \Huge Z^{(i)} \in \mathbb{R}^{P \times d_m} $$
 $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
  
 ### **3.3. Prompt as Prefix**
+시계열 데이터셋의 사전 정보를 자연어 형태로 제공함으로써, LLM의 패턴 인식과 추론 능력을 향상시킨다. 이때 사전 정보는 Dataset Context, Task instruction, Input Statistics이다. 
+
+(e.g. 전력량 예측의 경우: 전력은 여름에 많이 쓰여, 너는 내년 여름의 전력량을 예측해야 해, 올해 전력량 평균은 ---이야)
 
 
 ### **3.4. Output Generation**
@@ -136,4 +139,6 @@ Please write the reference. If paper provides the public code or other materials
   *   [Code for Paper](https://github.com/KimMeen/Time-LLM)
 * Reference
   *  [Time-LLM: Time Series Forecasting by Reprogramming Large Language Models](https://openreview.net/forum?id=Unb5CVPtae)
+  *  [Reversible Instance Normalization for Accurate Time-Series Forecasting against Distribution Shift](https://openreview.net/forum?id=cGDAkQo1C0p "Reversible Instance Normalization")
+
 
