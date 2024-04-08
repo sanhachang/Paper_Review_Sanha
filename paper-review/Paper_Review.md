@@ -71,7 +71,7 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{
  
  $$ \Large V_k^{(i)} = E'W_V^k, W_V^k \in \mathbb{R}^{D \times d} $$
  
- $$ \Large D: Backbone model Hidden dimension $$
+ $$ D: Backbone model Hidden dimension $$
  
 ## **4. Experiment**  
 
