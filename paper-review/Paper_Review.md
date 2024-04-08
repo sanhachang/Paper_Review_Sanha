@@ -43,7 +43,7 @@ $$ \huge \mathbf{X} \in \mathbb{R}^{N \times T} \rightarrow \mathbf{X}^{(i)} \in
 
  이후 각 단변수 시계열 데이터마다 Normalization을 진행한다. 이는 시계열 데이터가 주로 시간 변화에 따라 Distribution이 바뀌는 문제때문에 진행하는데, 이런 Distribution shift는 Forecating model이  generalization되지 않게 만드는 원인이다. 본 논문에서는 Reversible Instance Normalization(RevIN)을 사용하여 이 Distribution shift 현상을 해결하는데, 이는 따로 논문이 존재하니 더 자세히 알고 싶다면 아래의 논문을 참고하면 좋다.
  
-## [RevIN]([https://openreview.net/forum?id=cGDAkQo1C0p "Reversible Instance Normalization")
+[RevIN](https://openreview.net/forum?id=cGDAkQo1C0p "Reversible Instance Normalization")
 
 
 ## **4. Experiment**  
