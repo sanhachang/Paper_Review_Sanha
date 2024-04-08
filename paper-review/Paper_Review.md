@@ -37,8 +37,6 @@ Description: 'Jin et al. / Time-LLM: Time Series Forecasting by Reprogramming La
 ### **3.1. Model Setting**
 <img src="image1.png">
 
-*Framework ot Time LLM*
-
 위의 그림이 전체적인 모델의 Framework를 보여준다. 크게 Model Setting, Patch Reprogramming, Prompt as Prefix, Output Generation파트로 나눠지게 된다.
 먼저 Model Setting 파트를 보게 된다면, Multivariae Time Series Data를 변수별로 나누고 Window Size만큼 input으로 사용한다.
 
@@ -64,6 +62,13 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{
 (e.g. voca 속에 있는 apple, banana 등 관련 없는 단어는 없어짐)
 
  $$ \Huge E \in \mathbb{R}^{V \times D} \rightarrow E' \in \mathbb{R}^{V' \times D} $$
+
+ 이후 Embedding한 시계열 데이터와 위의 Text Prototype을 Cross-attention을 활용해 Align한다. 이때 Embedding TS는 Query로 Text-Prototype은 key와 value로 이용한다.
+
+ $$ \Large Q_k^{(i)} = \hat{X}_P^{(i)} W_Q^k, W_Q^k \in \mathbb{R}^{d_m \times d} $$
+ $$ \Large K_k^{(i)} = E'W_K^k, W_K^k \in \mathbb{R}^{D \times d} $$
+ $$ \Large V_k^{(i)} = E'W_V^k, W_V^k \in \mathbb{R}^{D \times d} $$
+ $$ \Large D: Backbone model Hidden dimension $$
  
 ## **4. Experiment**  
 
