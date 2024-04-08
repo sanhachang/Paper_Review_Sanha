@@ -90,6 +90,9 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 
 (e.g. 전력량 예측의 경우: 전력은 여름에 많이 쓰여, 너는 내년 여름의 전력량을 예측해야 해, 올해 전력량 평균은 ---이야)
 
+<img src="image2.png">
+
+ 위의 framework를 통해 진행되며, Pre-trained LLM을 통해 시계열 데이터셋의 사전정보를 Embedding 시키고, 이전에 Patch Reprogramming의 결과물과 Concat한다.
 
 ### **3.4. Output Generation**
 
