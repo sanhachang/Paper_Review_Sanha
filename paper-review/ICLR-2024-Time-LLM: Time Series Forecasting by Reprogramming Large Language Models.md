@@ -193,11 +193,11 @@ Few-shot learning을 사용해서 예측을 진행한 결과 대부분의 Baseli
 
 ## **5. Conclusion**  
 
-### **ㄱ) LLM 기반 시계열 데이터 예측 방법인 Time-LLM 제안
+#### **ㄱ) LLM 기반 시계열 데이터 예측 방법인 Time-LLM 제안**
 
  시계열 데이터와 Natural Language를 align시키는 Patch reprogramming을 선보였고, 나아가 LLM의 성능을 높이기 위한 Prompt-as-Prefix를 제안하였다. 특히, 이전의 연구에서는 Natural language와 시계열 데이터 간의 관계를 크게 고려하지 않았지만 이 연구를 통해 직접적으로 연결고리를 고려하여 성능을 높이는데 성공했다.
 
-### **ㄴ) Baseline보다 더 나은 성능
+#### **ㄴ) Baseline보다 더 나은 성능**
 
  Long-term, Short-term, Few-show, Zero-show에 대한 예측 성능이 거의 모든 Baseline보다 좋은 결과를 보여줬고, 특히나 Zero-shot의 경우 다른 LLM 기반 모델에 비해서 크게 뛰어난 성능을 가지고 있어, 현실 세계에 더 유용하다고 생각된다.
 
