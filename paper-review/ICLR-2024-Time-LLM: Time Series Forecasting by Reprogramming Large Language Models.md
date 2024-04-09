@@ -95,9 +95,10 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 (e.g. 전력량 예측의 경우: 전력은 여름에 많이 쓰여, 너는 내년 여름의 전력량을 예측해야 해, 올해 전력량 평균은 ---이야)
 
 <div align="center">
-    <img src="image2.png">
-    <figcaption> Prompt-as-Prefix </figcaption>
- 
+<figure>
+   <img src="image2.png">
+  <figcaption>Prompt-as-Prefix</figcaption>
+</figure>
 </div>
 <br>
 
