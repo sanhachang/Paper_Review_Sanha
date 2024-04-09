@@ -96,7 +96,7 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 
 <div align="center">
     <img src="image2.png">
-<figcaption> Prompt-as-Prefix </figcaption>
+    <figcaption> Prompt-as-Prefix </figcaption>
  
 </div>
 <br>
@@ -108,7 +108,7 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
  
 <div align="center">
     <img src="image3.png">
-<figcaption> Output Generation </figcaption>
+    <figcaption> Output Generation </figcaption>
 
 </div>
 <br>
