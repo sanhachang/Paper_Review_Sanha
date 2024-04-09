@@ -107,20 +107,46 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 
  마지막으로 그림과 같은 과정을 지나 나온 Output 시계열 embedding을 다시 시계열 형태로 바꿔주게 된다. 이때 데이터가 Patch 형태로 이루어져 있기 때문에 Flat하게 바꿔준 후 Projection을 진행한다. 
 
-$$ \Huge \text{Pre-trained LLM output} \quad \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \hat{\mathbf{Y}}^{(i)} \in \mathbb{R}^{1 \times H} $$
+$$ \Huge \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \hat{\mathbf{Y}}^{(i)} \in \mathbb{R}^{1 \times H} $$
 
 ## **4. Experiment**  
 ### **4.1. Dataset**
 아래와 같이 Long-term Forecasting과 Short-term Forecasting에 대한 데이터 셋을 나눠 놓았다. 
 
-
+<div align="center">
+    <img src="image4.png" alt="Prompt-as-Prefix">
+</div>
+ 
+ 이 데이터 셋에 대해 Input window size는 512로 모두 고정했고, 다만 데이터셋의 규모가 매우 작은 ILI만 예외로 window size를 96으로 진행했다. 이는 보통 Input window size를 96으로 고정하고 ILI 셋의 경우 36으로 지정하는 것과 다르게 본 논문에서 볼 수 있는 특이한 양상이다.
+ 
 ### **4.2. Evaluation Metric**
+ 본 논문은 Long-term Forecasting의 경우 MSE, MAE를 Evaluation Metric으로 사용했고, Short-term Forecastiong의 경우는 SMAPE, MSAE, OWA를 사용했다.
+
+ <div align="center">
+    <img src="image5.png" alt="Prompt-as-Prefix">
+</div>
 
 ### **4.3. Baseline**
+LLM Backbone은 Llama-7B을 사용했다. 아래는 Baseline을 보여주는 표이다.
+
+| Transformer based Model           | MLP based Model      | CNN based Model       | LLM based Model      |
+|-----------------------------------|----------------------|-----------------------|----------------------|
+| PatchTST(2023),                   | Dliner(2023),        | TimesNet(2023)        | GPT4TS(OFA, 2023),   |
+| FEDformer(2022),                  | LightTS(2022)        |                       | LLMTime(2023)        |
+| Autoformer(2021),                 |                      |                       |                      |
+| Non-stationary transformer(2022), |                      |                       |                      |
+| ETSformer(2022),                  |                      |                       |                      |
+| Informer(2021), Reformer(2020)    |                      |                       |                      |
+
 
 ### **4.4. Result**
-
 #### **4.4.1. Long-term Forecasting**
+
+ <div align="center">
+    <img src="image6.png" alt="Prompt-as-Prefix">
+</div>
+ 
+ 여러 종류의 Prediction Horizon(예측하는 y의 길이)을 사용해 Metric 평균 값으로 정리한 결과 대부분의 경우 모든 Baseline보다 뛰어난 성능을 보였다. 기존 SOTA model인 PatchTST에 비해 MSE가 감소한 것과 본 논문의 모델과 유사하게 LLM을 사용하는 GPT4TS에 비해 큰 성능 향상을 보이는 것이 특별한 점이다. 하지만, GPT4TS는 Backbone 모델을 GPT2를 사용했기에 이에 유의해야 한다. 
 
 #### **4.4.2. Short-term Forecasting**
 
