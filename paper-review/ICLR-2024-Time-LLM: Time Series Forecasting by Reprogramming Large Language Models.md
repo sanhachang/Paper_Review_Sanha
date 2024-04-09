@@ -99,7 +99,8 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
  위의 framework를 통해 진행되며, Pre-trained LLM을 통해 시계열 데이터셋의 사전정보를 Embedding 시키고, 이전에 Patch Reprogramming의 결과물과 Concat한다.
 
 ### **3.4. Output Generation**
-
+ 이제 위의 과정을 통해 만들어진 Final Input을 Pre-trained LLM에 넣어주고, 이후 나온 Output의 Prefix part를 제거한 후 원래 시계열 데이터 부분만 남기고 Output Representation을 진행한다. 
+ 
 
 
 ## **4. Experiment**  
