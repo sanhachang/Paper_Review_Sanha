@@ -100,6 +100,7 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
  
 </div>
 <br>
+
  위의 framework를 통해 진행되며, Pre-trained LLM을 통해 시계열 데이터셋의 사전정보를 Embedding 시키고, 이전에 Patch Reprogramming의 결과물과 Concat한다.
 
 ### **3.4. Output Generation**
@@ -111,6 +112,7 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 
 </div>
 <br>
+
  마지막으로 그림과 같은 과정을 지나 나온 Output 시계열 embedding을 다시 시계열 형태로 바꿔주게 된다. 이때 데이터가 Patch 형태로 이루어져 있기 때문에 Flat하게 바꿔준 후 Projection을 진행한다. 
 
 $$ \Huge \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \hat{\mathbf{Y}}^{(i)} \in \mathbb{R}^{1 \times H} $$
@@ -125,6 +127,7 @@ $$ \Huge \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \h
 
 </div>
  <br>
+ 
  이 데이터 셋에 대해 Input window size는 512로 모두 고정했고, 다만 데이터셋의 규모가 매우 작은 ILI만 예외로 window size를 96으로 진행했다. 이는 보통 Input window size를 96으로 고정하고 ILI 셋의 경우 36으로 지정하는 것과 다르게 본 논문에서 볼 수 있는 특이한 양상이다.
  
 ### **4.2. Evaluation Metric**
@@ -136,6 +139,7 @@ $$ \Huge \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \h
   
 </div>
 <br>
+
 ### **4.3. Baseline**
 LLM Backbone은 Llama-7B을 사용했다. 아래는 Baseline을 보여주는 표이다.
 
@@ -158,6 +162,7 @@ LLM Backbone은 Llama-7B을 사용했다. 아래는 Baseline을 보여주는 표
  
 </div>
  <br>
+ 
  여러 종류의 Prediction Horizon(예측하는 y의 길이)을 사용해 Metric 평균 값으로 정리한 결과 대부분의 경우 모든 Baseline보다 뛰어난 성능을 보였다. 기존 SOTA model인 PatchTST에 비해 MSE가 감소한 것과 본 논문의 모델과 유사하게 LLM을 사용하는 GPT4TS에 비해 큰 성능 향상을 보이는 것이 특별한 점이다. 하지만, GPT4TS는 Backbone 모델을 GPT2를 사용했기에 이에 유의해야 한다. 
 
 #### **4.4.2. Short-term Forecasting**
@@ -168,6 +173,7 @@ LLM Backbone은 Llama-7B을 사용했다. 아래는 Baseline을 보여주는 표
   
 </div>
 <br>
+
  Short-term Prediction에 사용되는 데이터셋은 Prediction horizon을 6과 48 사이의 값을 사용하고, Input length는 Prediction horizon의 2배의 길이를 채택했다. 이 경우 또한, Time-LLm이 기존 SOTA인 N-HiTS와 비교했을 때보다 좋은 성능을 갖고, 모든 Baseline보다 뛰어난 성능을 보인다. 특히나, 같은 LLM을 사용하는 GPT4TS보다 성능이 우수하여 장단기 시계열 예측 모두 더 좋은 성능을 갖는다고 말할 수 있다.
 
 #### **4.4.3. Few-shot Learning**
@@ -178,6 +184,7 @@ LLM Backbone은 Llama-7B을 사용했다. 아래는 Baseline을 보여주는 표
  
 </div>
 <br>
+
 Few-shot learning을 사용해서 예측을 진행한 결과 대부분의 Baseline보다 좋은 성능을 갖는다. 또한, LLM 기반의 모델들이 좋은 성능을 보이는 것을 알 수 있는데 이는 Pre-trained LLM이 자체적으로 뛰어난 패턴 인식 능력과 추론 능력을 가지고 있기 때문이라고 말할 수 있다. 특히, 위 결과를 보면 10%의 Training Data만 사용한 Few-shot learning의 경우 거의 모든 데이터셋에서 가장 좋은 성능을 갖는다.
 
  <div align="center">
@@ -186,6 +193,7 @@ Few-shot learning을 사용해서 예측을 진행한 결과 대부분의 Baseli
   
 </div>
 <br>
+
  5%의 Training Data만 사용한 Few-shot learning의 경우에서는 종종 Transformer의 변형 Model들도 좋은 결과를 갖는 것을 보이는데, 이는 LLM의 패턴 인식을 활용하기 위한 데이터의 양이 비교적 부족함을 의미한다. 
 
 #### **4.4.4. Zero-shot Learning**
