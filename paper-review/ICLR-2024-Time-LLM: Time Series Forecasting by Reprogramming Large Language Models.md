@@ -37,6 +37,7 @@ Description: 'Jin et al. / Time-LLM: Time Series Forecasting by Reprogramming La
 ### **3.1. Model Setting**
 <div align="center">
     <img src="image1.png">
+<figcaption>Model Framework</figcaption>
 </div>
 
 위의 그림이 전체적인 모델의 Framework를 보여준다. 크게 Model Setting, Patch Reprogramming, Prompt as Prefix, Output Generation파트로 나눠지게 된다.
