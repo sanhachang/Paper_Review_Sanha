@@ -101,14 +101,18 @@ $$ \Huge O^{(i)} \in \mathbb{R}^{P \times D} $$
 ### **3.4. Output Generation**
  이제 위의 과정을 통해 만들어진 Final Input을 Pre-trained LLM에 넣어주고, 이후 나온 Output의 Prefix part를 제거한 후 원래 시계열 데이터 부분만 남기고 Output Representation을 진행한다. 
  
+<div align="center">
+    <img src="image3.png" alt="Prompt-as-Prefix">
+</div>
 
+ 마지막으로 그림과 같은 과정을 지나 나온 Output 시계열 embedding을 다시 시계열 형태로 바꿔주게 된다. 이때 데이터가 Patch 형태로 이루어져 있기 때문에 Flat하게 바꿔준 후 Projection을 진행한다. 
+
+$$ \Huge \text{Pre-trained LLM output} \quad \tilde{\mathbf{O}}^{(i)} \in \mathbb{R}^{P \times D} \longrightarrow \hat{\mathbf{Y}}^{(i)} \in \mathbb{R}^{1 \times H} $$
 
 ## **4. Experiment**  
-
-In this section, please write the overall experiment results.  
-At first, write experiment setup that should be composed of contents.  
-
 ### **4.1. Dataset**
+아래와 같이 Long-term Forecasting과 Short-term Forecasting에 대한 데이터 셋을 나눠 놓았다. 
+
 
 ### **4.2. Evaluation Metric**
 
