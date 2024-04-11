@@ -73,7 +73,7 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_ P^
  
  $$ \large V_ k^{(i)} = E'W_ k^V, W_ k^V \in \mathbb{R}^{D \times d} $$
  
- $$ D: Backbone_model_Hidden_dimension $$
+ $$ D: "Backbone model Hidden dimension" $$
 
 위의 Query, Key, Value를 활용해 Multi-head Cross Attention 과정을 거친다.
 
