@@ -50,14 +50,14 @@ $ \Huge \mathbf{X} \in \mathbb{R}^{N \times T} \rightarrow \mathbf{X}^{(i)} \in 
 
  Nomalization 이후 시계열 데이터 셋에 대해 Patching을 해주게 된다. 시계열 데이터의 특성상 시간에 연속적이기에 각 Time-step끼리는 연관되어 있는 Semantic Information이 있기에 이를 Patching을 통해서 단일 시점의 데이터들을 통합하여 Local semantic information을 보존한다.
 
-$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{(i)} \in \mathbb{R}^{P \times L_p} $
+$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_ P^{(i)} \in \mathbb{R}^{P \times L_ p} $
 
 ### **3.2. Patch Reprogramming**
  시계열 데이터를 Natural Language처럼 처리될 수 있게 Modality를 Align해주는 과정이 필요하다. 이를 통해 시계열 데이터를 Backbone model이 이해하기 쉬워지고, 시계열 데이터 속에서 Temporal Interrelationship을 잘 capture하게 된다. 그래서 이 과정에서 시계열 데이터의 특성이나 변화를 설명할 수 있는 Text 등을 이전의 Patching이 된 데이터에 Cross-Attention을 수행하여 Patch Representation을 진행한다. (시계열 데이터를 설명하는 Text 예시: "Short", "Up", "Late, "Steady" 등)
 
  먼저 이전의 Patching을 끝낸 시계열 데이터에 대해 Linear layer를 통해 embedding을 진행시킨다.
 
- $ \Huge \mathbf{X}_P^{(i)} \in \mathbb{R}^{P \times L_p} \rightarrow \hat{\mathbf{X}}_P^{(i)} \in \mathbb{R}^{P \times d_m} $
+ $ \Huge \mathbf{X}_ P^{(i)} \in \mathbb{R}^{P \times L_ p} \rightarrow \hat{\mathbf{X}}_ P^{(i)} \in \mathbb{R}^{P \times d_ m} $
 
  그 후 위에서 얘기한 Modality align과정을 진행하게 되는데, 기존의 존재하는 vocabulary에는 너무 많은 단어가 존재하기에 전체 Word embedding을 사용하기에는 큰 cost가 존재하고, Time-series forecasting에 필요하지 않은 Prior knowledge가 많다. 이를 해결하기 위해 Voca를 미리 Linear layer를 통과시켜 핵심 단어로만 이루어진 Text Prototypes을 만든다.
 
@@ -67,21 +67,21 @@ $ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_P^{(
 
  이후 Embedding한 시계열 데이터와 위의 Text Prototype을 Cross-attention을 활용해 Align한다. 이때 Embedding TS는 Query로 Text-Prototype은 key와 value로 이용한다.
 
- $ \large Q_k^{(i)} = \hat{X}_P^{(i)} W_Q^k, W_Q^k \in \mathbb{R}^{d_m \times d} $
+ $ \large Q_ k^{(i)} = \hat{X}_ P^{(i)} W_ Q^k, W_ Q^k \in \mathbb{R}^{d_ m \times d} $
  
- $ \large K_k^{(i)} = E'W_K^k, W_K^k \in \mathbb{R}^{D \times d} $
+ $ \large K_ k^{(i)} = E'W_ K^k, W_ K^k \in \mathbb{R}^{D \times d} $
  
- $ \large V_k^{(i)} = E'W_V^k, W_V^k \in \mathbb{R}^{D \times d} $
+ $ \large V_ k^{(i)} = E'W_ V^k, W_ V^k \in \mathbb{R}^{D \times d} $
  
  $ D: Backbone_model_Hidden_dimension $
 
 위의 Query, Key, Value를 활용해 Multi-head Cross Attention 과정을 거친다.
 
-$ \Huge Z_k^{(i)} = \text{ATTENTION}\left(Q_k^{(i)}, K_k^{(i)}, V_k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_k^{(i)} {K_k^{(i)}}^T}{\sqrt{d_k}}\right) V_k^{(i)}, \quad Z_k^{(i)} \in \mathbb{R}^{P \times d} $
+$ \Huge Z_ k^{(i)} = \text{ATTENTION}\left(Q_ k^{(i)}, K_ k^{(i)}, V_ k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_ k^{(i)} {K_ k^{(i)}}^T}{\sqrt{d_ k}}\right) V_ k^{(i)}, \quad Z_ k^{(i)} \in \mathbb{R}^{P \times d} $
 
 이렇게 만들어진 각 head를 Concat하여 Attention Output을 만들고
 
-$ \Huge Z^{(i)} \in \mathbb{R}^{P \times d_m} $
+$ \Huge Z^{(i)} \in \mathbb{R}^{P \times d_ m} $
 
 이 Output을 이후 Backbonemodel에 Align하기 위해 Projection을 진행하여 Patch Reprogemming을 마무리한다.
 
