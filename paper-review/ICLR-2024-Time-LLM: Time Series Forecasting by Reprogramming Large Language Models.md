@@ -67,11 +67,11 @@ $$ \Huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_ P^
 
  이후 Embedding한 시계열 데이터와 위의 Text Prototype을 Cross-attention을 활용해 Align한다. 이때 Embedding TS는 Query로 Text-Prototype은 key와 value로 이용한다.
 
- $$ \large Q_ k^{(i)} = \hat{X}_ P^{(i)} W_ Q^k, W_ Q^k \in \mathbb{R}^{d_ m \times d} $$
+ $$ \large Q_ k^{(i)} = \hat{X}_ P^{(i)} W_ k^Q, W_ k^Q \in \mathbb{R}^{d_ m \times d} $$
  
- $$ \large K_ k^{(i)} = E'W_ K^k, W_ K^k \in \mathbb{R}^{D \times d} $$
+ $$ \large K_ k^{(i)} = E'W_ k^K, W_ k^K \in \mathbb{R}^{D \times d} $$
  
- $$ \large V_ k^{(i)} = E'W_ V^k, W_ V^k \in \mathbb{R}^{D \times d} $$
+ $$ \large V_ k^{(i)} = E'W_ k^V, W_ k^V \in \mathbb{R}^{D \times d} $$
  
  $$ D: Backbone_model_Hidden_dimension $$
 
