@@ -77,7 +77,7 @@ $\huge \mathbf{X}^{(i)} \in \mathbb{R}^{1 \times T} \rightarrow \mathbf{X}_ P^{(
 
 위의 Query, Key, Value를 활용해 Multi-head Cross Attention 과정을 거친다.
 
-$\Large Z_ k^{(i)} = \text{ATTENTION}\left(Q_ k^{(i)}, K_ k^{(i)}, V_ k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_ k^{(i)} {K_ k^{(i)}}^T}{\sqrt{d_ k}}\right) V_ k^{(i)}, \quad Z_ k^{(i)} \in \mathbb{R}^{P \times d}$
+$\large Z_ k^{(i)} = \text{ATTENTION}\left(Q_ k^{(i)}, K_ k^{(i)}, V_ k^{(i)}\right) = \text{SOFTMAX}\left(\frac{Q_ k^{(i)} {K_ k^{(i)}}^T}{\sqrt{d_ k}}\right) V_ k^{(i)}, \quad Z_ k^{(i)} \in \mathbb{R}^{P \times d}$
 
 이렇게 만들어진 각 head를 Concat하여 Attention Output을 만들고
 
