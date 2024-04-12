@@ -221,6 +221,9 @@ Few-shot learning을 사용해서 예측을 진행한 결과 대부분의 Baseli
 전체적으로 모든 Baseline보다 좋은 성능을 갖으며, 특히나 다른 LLM 기반 모델들보다 훨씬 좋은 성능을 보이기에 현실적으로 시계열 데이터가 부족한 상황에서 더 유용하다고 생각한다. 
 
 #### **4.4.5. Model Analysis**
+ 이 파트에서는 Abalation analysis를 진행하여 Language Model별, Multi Modality Data를 처리하는 방법별, External Info별로 성능이 어떻게 변하는지 결과를 보여준다. 특히, 본 논문의 Framework는 잘 따르면서 LLM만 Llama(32)를 사용한 것이 가장 좋은 성능을 내었다. 이를 통해 결국 Backbone Model의 성능이 시계열 분석의 성능을 좌지우지함을 예상할 수 있다.
+ 또한,
+
 
 ## **5. Conclusion**  
 
@@ -231,7 +234,12 @@ Few-shot learning을 사용해서 예측을 진행한 결과 대부분의 Baseli
 #### **ㄴ) Baseline보다 더 나은 성능**
  Long-term, Short-term, Few-show, Zero-show에 대한 예측 성능이 거의 모든 Baseline보다 좋은 결과를 보여줬고, 특히나 Zero-shot의 경우 다른 LLM 기반 모델에 비해서 크게 뛰어난 성능을 가지고 있어, 현실 세계에 더 유용하다고 생각된다.
 
- 하지만 아직 LLM의 무엇이 시계열 데이터 예측이나 분석을 잘 수행시킬 수 있는지는 알려지지 않았으며, 패턴 인식 혹은 추론 능력 정도로만 가정할 뿐이기 때문에 앞으로 더 깊은 탐구가 필요하다.
+ 하지만 아직 LLM의 무엇이 시계열 데이터 예측이나 분석을 잘 수행시킬 수 있는지는 알려지지 않았으며, 패턴 인식 혹은 추론 능력 정도로만 가정할 뿐이기 때문에 앞으로 더 깊은 탐구가 필요하다. 개인적으로 Backbone LLM의 발전은 결국 성능의 증가를 불러일으킬 것이라고 생각하며, 앞으로 발전된 모델이 나올 때마다 시계열 분석을 진행하면 좋을 것 같다.
+
+ <div align="center">
+    <img src="https://lh3.googleusercontent.com/fife/ALs6j_Gt5AsN48peJfRSHZ5vvQId1TjKEMArkjbCuDhUkrUTsS-BBnzP5xRinmEFp1hqEqv7WiQtxqPVSHrDZEk1YlBgjseDcOdp9XKj7VR8q_xi4zHi7hME4oFNpo6n9BAJb5DHR9K59ZZR7_ILhieOmWroxFU2nrGR2ZRHSNRwrVctWQazt1YcLUR--cvAGgT_pt5XYf4KifrYBJtxxsZCijcekDj6Py8laW31Q4I8Qq2l7-We0puF2ydtCkcIAvn5qayQl5FC5aSvOrSo6zqfHpQTopAjEbE1UL4m4o3iX4PRFvv3Aob6EXtO7eVe7c4occ2tq90a1uq84wT5FfN5kPHRAr6XgJe5hISEU8AFC8NIFCDC6T-LNOjp38ohPASGizv4tYtqQHK6M8E5CxUCATSh2pxO2DRQ5oqjyaD2gZCA4PDmE7ML1NTGxXbzBhkt5SilxA1IX-1gPYwlREzW7RI2erd3GcS-HTm9SStoiwi3b5_FVCNyNzwlr3sK-ddUlLHfxZWPKz5YB9EDiOxjm_it_0CP_8-E52WR3fbfWWyy71xob0zyMq0R77SbCUVjYQ-6_qwCzP4L9U79m6jWrsfFJzMruqZNo8TSdyrkAdBDQ0fT_JuddvX687LSc1TjVwl773cifQIfWgfVNa3N55Kjkxy557T0na4g7EraOzSVCv9NDGG67o96UaM80TYY8sU0G5JSx_6o-M4Gr3fKJUcSbjLJeHxVWHdf0TfXOFwZmf7IIhu7cPbMct0XJCgiz-uFl2Z5tNqX88hEOfl8bb5jQECvXwO2Rujw9ZTpT4uQC2kwHO4oLfV7I9W6So3r7y_OIBM973-U5oYaoKU_ET7N2j7k6frTkIgvUiaPnJyTtcZWIsMtdXWj71cHoP-1yiyHb3PX97pYt37G7tAK_W9I0mm1DU_KV24A27nbTxSl2_QkNQ8sa9TX_zRllcFiDkeHoT4NZRxeqiJOSzUvWe57nkepnwoTwNRhBJyIw_oJUNXpyvTbq0TrJRCiqQ8bUguqQWoLvnz2UnudHJzt3SkdHrhl0CS4ACe6RJz8P8MEi1hTFx9z_ZdX8Uw8NojDsXJpcQY6GMsqeDT2-En7TEWd3uUxf6PhYvnazdsmCFZv44d3BEbb3q2iB0cCJbKdeGFEBTnXqb5V0nqDFTV7F8o1OFvqV5ulPucoJpmtqyUMPQ1weak9A8ywdyuJZdRanFAv6vvRb3Jx2RAlviskIemXkJZFefbND7ZDBwPQqkcsrXClsec7SSmfeMt6C_D75XF12PfEi_tU_GHEvZ_YeFcBSytMlmguCCzZJKa4fE4ZVEIrGwh2gK03Dqvx5rheFLZo_MP0GeNSpQy8svUXDd0pOnRhLKb4znxoUvk44GzKTyX_k0Vis16tgZMZj8G_bs9hDJ5RsvXzTX60khkKSX4JUTqGjSZecyLABgcD17uHtbIuG09zzAAsjr9XQI97nEXJT-Gnc1s-ynfcUOCsr5Nqs4PvzvQ2aLm51-6OJP9fomeXR5gxeQc8EpgPt7RT4RtQbwbAvwf6EsNPiD1YECMgpGgO7-F99V3ScQs2t3g-umbU5nDZbyh4Gz-S-2ajFRgn4iCgA1auIw=w1920-h919">
+</div>  
+> Ablation Result(MSE reported)
 
 ---  
 ## **Author Information**  
