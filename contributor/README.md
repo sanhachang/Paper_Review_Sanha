@@ -18,4 +18,4 @@ The instructor and assistant of **KAIST: DS503 Machine Learning For Data Science
     * Assistant(2022-Spring), [\[Personal Homepage or Github\]](https://github.com/rlqja1107)  
 
 
-W \sim \mathcal{N}\left(0, \frac{2}{n_{\text{in}} + n_{\text{out}}}\right)
+$ W \sim \mathcal{N}\left(0, \frac{2}{n_{\text{in}} + n_{\text{out}}}\right) $
